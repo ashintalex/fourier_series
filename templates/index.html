@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fourier series</title>
+</head>
+<body>
+    <h1>Fourier Calculator</h1>
+    <img src="{{ url_for('static', filename='fourier_equation.png') }}" alt="Fourier Equation"  width="600" height="120">
+    <!--img src="fourier_python/images/fourier_equation.PNG" alt="Image">
+
+    <!--Display the user input-->
+    <form action="{{ url_for('calculate') }}" method="POST">
+        <label for="input_periodic_function">f(x):</label><br>
+        <input type="text" id="input_periodic_function" name="input_periodic_function"><br>
+
+        <label for="no_of_terms">No of terms (n):</label><br>
+        <input type="number" id="no_of_terms" name="no_of_terms"><br>
+
+        <label for="no_of_cycles">No of cycles:</label><br>
+        <input type="number" id="no_of_cycles" name="no_of_cycles"><br><br>
+
+        <label >Interval [-L, R]:</label><br><br>
+        <label for="interval_start">Interval start (L):</label><br>
+        <input type="number" id="interval_start" name="interval_start"><br>
+
+        <label for="interval_end">Interval end (R):</label><br>
+        <input type="number" id="interval_end" name="interval_end"><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <!-- Display the generated graph as an image -->
+    {% if plot_image %}
+    <h2>Fourier Approximation</h2>
+    <img src="{{ url_for('static', filename='plot.png') }}" alt="Generated Graph">
+    {% endif %}
+
+    <!-- Display the Fourier terms with a heading -->
+    <h2>Fourier Coefficients</h2>
+    <ul>
+        {% for term in term_list %}
+            <li>{{ term }}</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
